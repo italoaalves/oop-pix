@@ -37,3 +37,14 @@ Apagar, Transferir) e o menu “Repositorio” (submenus Listar contas, Listar l
 - Tela de Apagar Conta: campo para digitação do cpf
 - Tela de Transferir: campo para digitação do cpf (origem) e da chave (destino) e valor
 - Tela de Listar: uma única tela com uma área de texto, para todos as listagens
+
+## Considerações finais:
+- Desenvolver o sistema utilizando as camadas de aplicação, fachada, repositório e modelo
+- Não se pode alterar os métodos da Fachada
+- A classe Fachada deverá lançar Exception nos métodos que não conseguirem realizar suas tarefas
+previstas
+- Uma conta deve ser exibida junto com os dados do seu correntista e de todos os seus lançamentos
+- Todas as telas devem ter um label destinado à exibição das mensagens ao usuário (de sucesso ou de
+exceção que possam ocorrer)
+- Na abertura da Tela Principal (evento windowsopened) deve ser feito o cadastro manual de 4 contas
+(sendo 2 contas especiais), onde cada conta deve ter um tipo de chave diferente.
