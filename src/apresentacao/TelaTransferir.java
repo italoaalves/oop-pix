@@ -100,7 +100,7 @@ public class TelaTransferir extends JFrame {
 				}
 			}
 		});
-		btnTransferir.setBounds(227, 91, 95, 23);
+		btnTransferir.setBounds(227, 91, 150, 23);
 		contentPane.add(btnTransferir);
 	}
 }
