@@ -138,7 +138,7 @@ public class Fachada {
 		Conta conta = Fachada.obterConta(cpf);
 
 		conta.setChavePiks(gerarChavePIKS(cpf, tipochave, conta));
-		repositorio.adicionar(conta);
+		if(!repositorio.getContas().containsValue(conta)) repositorio.adicionar(conta);
 	}
 
 	private static String gerarChavePIKS(String cpf, String tipochave, Conta conta) {
