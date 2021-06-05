@@ -242,7 +242,7 @@ public class TelaPrincipal {
 					texto = erro.getMessage();
 				}
 
-				TelaContaTop j = new TelaContaTop(texto);
+				TelaListagem j = new TelaListagem(texto);
 				j.setVisible(true);
 			}
 		});
