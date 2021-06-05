@@ -42,8 +42,11 @@ public class Repositorio {
         contas.remove(conta.getChavePiks());
     }
 
-    public Conta localizarConta(String name) {
-        return this.contas.get(name);
+    public Conta localizarConta(String chavePIKS) {
+        if (!this.contas.containsKey(chavePIKS))
+            throw new IllegalStateException("Conta de chave:" + chavePIKS + " não encontrada.");
+
+        return this.contas.get(chavePIKS);
     }
 
     public int getTotalContas(){

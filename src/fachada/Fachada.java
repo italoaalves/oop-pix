@@ -161,18 +161,20 @@ public class Fachada {
 				for(int i = 0; i < 9; i++) chaveBuilder.append(generator.nextInt(9));
 				chave = chaveBuilder.toString();
 		}
-		if(unica(chave)) {
+
+		if(unica(chave))
 			return chave;
-		} else if (tipochave.equals("aleatorio")){
+		else if(tipochave.equals("aleatorio"))
 			return gerarChavePIKS(cpf, tipochave, conta);
-		} else {
-			throw new IllegalStateException("Chave já existe");
-		}
+		else throw new IllegalStateException("Chave já existe");
 	}
 
 	private static boolean unica(String chave) {
-		Conta conta = repositorio.localizarConta(chave);
-		if(conta != null) return false;
-		return true;
+		try {
+			Conta conta = repositorio.localizarConta(chave);
+			return false;
+		} catch (IllegalStateException erro) {
+			return true;
+		}
 	}
 }

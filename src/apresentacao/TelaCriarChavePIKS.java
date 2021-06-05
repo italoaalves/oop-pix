@@ -82,14 +82,10 @@ public class TelaCriarChavePIKS extends JFrame {
 				try {
 					String cpf = textField.getText();
 					String tipochave = (String) list.getSelectedValue();
-					Conta conta = Fachada.obterConta(cpf);
-
-					boolean edicao = false;
-					if(!conta.getChavePiks().isEmpty()) edicao = true;
 
 					Fachada.criarChavePIKS(cpf, tipochave);
 
-					lblmsg.setText(edicao ? "chave alterada" : "chave criada");
+					lblmsg.setText("chave alterada");
 				} catch (Exception e) {
 					lblmsg.setText(e.getMessage());
 				}
