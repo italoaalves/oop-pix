@@ -1,7 +1,6 @@
 package apresentacao;
 
 import fachada.Fachada;
-import modelo.Conta;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,16 +14,10 @@ public class TelaTransferir extends JFrame {
 	private JTextField textField_1;
 	private JLabel label;
 	private JLabel label_1;
-	private JButton btnCriar;
+	private JButton btnTransferir;
 	private JLabel lblmsg;
 	private JLabel label_2;
 	private JTextField textField_2;
-	private JLabel label_3;
-	private JTextField textField_3;
-	private JLabel label_4;
-	private JTextField textField_4;
-	private JRadioButton radioButton;
-	private JRadioButton radioButton_1;
 
 	/**
 	 * Launch the application.
@@ -46,7 +39,7 @@ public class TelaTransferir extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaTransferir() {
-		setTitle("Criar Conta e Correntista");
+		setTitle("Transferir");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 424, 226);
@@ -75,17 +68,26 @@ public class TelaTransferir extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 
-		btnCriar = new JButton("Cadastrar");
-		btnCriar.addActionListener(new ActionListener() {
+		label_2 = new JLabel("Valor:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(20, 61, 100, 14);
+		contentPane.add(label_2);
+
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(180, 61, 100, 20);
+		contentPane.add(textField_2);
+
+		lblmsg = new JLabel();
+		lblmsg.setHorizontalAlignment(SwingConstants.LEFT);
+		lblmsg.setBounds(20, 121, 300, 14);
+		contentPane.add(lblmsg);
+
+		btnTransferir = new JButton("Transferir");
+		btnTransferir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
+				try {
 					lblmsg.setText("");
-					if(textField.getText().isEmpty() || textField_1.getText().isEmpty() ||
-							textField_2.getText().isEmpty() || textField_3.getText().isEmpty())
-					{
-						lblmsg.setText("campo vazio");
-						return;
-					}
 					String contaorigemcpf = textField.getText();
 					String contadestino = textField_1.getText();
 					double valor = Double.parseDouble(textField_2.getText());
@@ -98,17 +100,7 @@ public class TelaTransferir extends JFrame {
 				}
 			}
 		});
-		btnCriar.setBounds(227, 91, 95, 23);
-		contentPane.add(btnCriar);
-
-		label_2 = new JLabel("Valor:");
-		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_2.setBounds(20, 61, 100, 14);
-		contentPane.add(label_2);
-
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(180, 61, 100, 20);
-		contentPane.add(textField_2);
+		btnTransferir.setBounds(227, 91, 95, 23);
+		contentPane.add(btnTransferir);
 	}
 }
