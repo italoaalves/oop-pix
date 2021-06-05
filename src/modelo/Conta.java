@@ -8,24 +8,48 @@ public class Conta {
     private double saldo;
     private String chavePiks;
     private String tipoChavePiks;
-    private ArrayList<Lancamento> lancamentos;
-    private final Correntista correntista;
+    private final ArrayList<Lancamento> lancamentos = new ArrayList<>();
+    private Correntista correntista;
 
     public Conta(String numero, double saldo, String chavePiks, String tipoChavePiks, Correntista correntista) {
         this.numero = numero;
         this.saldo = saldo;
         this.chavePiks = chavePiks;
         this.tipoChavePiks = tipoChavePiks;
-        this.lancamentos = new ArrayList<>();
         this.correntista = correntista;
+    }
+
+    public Conta(String numero) {
+        this.numero = numero;
     }
 
     public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public void creditar(double valor) {
+        if(valor <= 0) {
+            throw new IllegalArgumentException("valor inválido.");
+        }
+
+        this.saldo += valor;
+    }
+
+    public void debitar(double valor) {
+        if(this.saldo-valor < 0) {
+            throw new IllegalStateException("Saldo insuficiente.");
+        }
+
+        this.saldo -= valor;
+    }
+
+    public void transferir(Conta conta, double valor) {
+        if(this.saldo-valor < 0) {
+            throw new IllegalStateException("Saldo insuficiente.");
+        }
+
+        this.saldo -= valor;
+        conta.creditar(valor);
     }
 
     public String getChavePiks() {
@@ -54,5 +78,17 @@ public class Conta {
 
     public Correntista getCorrentista() {
         return correntista;
+    }
+
+    public void setCorrentista(Correntista correntista) {
+        this.correntista = correntista;
+    }
+
+    public void adicionarLancamento(Lancamento lancamento) {
+        this.lancamentos.add(lancamento);
+    }
+
+    public String toString() {
+        return "Numero: " + this.numero + ", Chave Piks: " + this.chavePiks + ", Saldo: " + this.saldo;
     }
 }

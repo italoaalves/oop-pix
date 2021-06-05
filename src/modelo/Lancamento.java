@@ -25,4 +25,8 @@ public class Lancamento {
     public String getNumeroConta() {
         return numeroConta;
     }
+
+    public String toString() {
+        return "Horário: " + this.dataHora.toString() + ", Quantia: " + this.valor + ", Conta de " + (this.valor >= 0 ? "destino: " : "origem: ") + this.numeroConta;
+    }
 }

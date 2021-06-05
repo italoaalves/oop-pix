@@ -30,7 +30,7 @@ número da conta origem da transferência.
 
 ## Telas
 - Tela Principal: contendo uma imagem de fundo, o menu “Conta” (submenus Criar, Alterar chave,
-Apagar, Transferir) e o menu “Repositorio” (submenus Listar contas, Listar lancamentos)
+Apagar, Transferir) e o menu “repositorio.repositorio” (submenus Listar contas, Listar lancamentos)
 - Tela de Criar Conta: campos para digitação dos dados da conta e correntista
 - Tela de Criar Conta Especial: campos para digitação dos dados da conta e correntista + limite
 - Tela de Criar Chave: campos para digitação do cpf e do tipo da chave
@@ -40,8 +40,8 @@ Apagar, Transferir) e o menu “Repositorio” (submenus Listar contas, Listar l
 
 ## Considerações finais:
 - Desenvolver o sistema utilizando as camadas de aplicação, fachada, repositório e modelo
-- Não se pode alterar os métodos da Fachada
-- A classe Fachada deverá lançar Exception nos métodos que não conseguirem realizar suas tarefas
+- Não se pode alterar os métodos da fachada
+- A classe fachada deverá lançar Exception nos métodos que não conseguirem realizar suas tarefas
 previstas
 - Uma conta deve ser exibida junto com os dados do seu correntista e de todos os seus lançamentos
 - Todas as telas devem ter um label destinado à exibição das mensagens ao usuário (de sucesso ou de
