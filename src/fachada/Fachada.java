@@ -147,10 +147,13 @@ public class Fachada {
 		switch(tipochave) {
 			case "cpf":
 				chave = cpf;
+				break;
 			case "email":
 				chave = conta.getCorrentista().getEmail();
+				break;
 			case "telefone":
 				chave = conta.getCorrentista().getTelefone();
+				break;
 			default:
 				StringBuilder chaveBuilder = new StringBuilder();
 				Random generator = new Random();
@@ -158,7 +161,6 @@ public class Fachada {
 				for(int i = 0; i < 9; i++) chaveBuilder.append(generator.nextInt(9));
 				chave = chaveBuilder.toString();
 		}
-
 		if(unica(chave)) {
 			return chave;
 		} else if (tipochave.equals("aleatorio")){
@@ -169,11 +171,8 @@ public class Fachada {
 	}
 
 	private static boolean unica(String chave) {
-		for(Conta c : repositorio.getContas().values()) {
-			if(c.getChavePiks().equals(chave)) {
-				return false;
-			}
-		}
+		Conta conta = repositorio.localizarConta(chave);
+		if(conta != null) return false;
 		return true;
 	}
 }

@@ -5,7 +5,6 @@
 package apresentacao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,12 +22,13 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import fachada.Fachada;
+import modelo.Conta;
 
 public class TelaCriarChavePIKS extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblNome;
 	private JTextField textField;
-	private JButton btnApagar;
+	private JButton btnEnviar;
 	private JLabel lblmsg;
 	private JList list;
 
@@ -59,7 +59,7 @@ public class TelaCriarChavePIKS extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setTitle("Criar chave PIKS");
+		setTitle("Chave PIKS");
 		setBounds(100, 100, 345, 175);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		contentPane = new JPanel();
@@ -76,22 +76,27 @@ public class TelaCriarChavePIKS extends JFrame {
 		textField.setBounds(70, 26, 86, 20);
 		contentPane.add(this.textField);
 		textField.setColumns(10);
-		btnApagar = new JButton("Criar chave");
-		btnApagar.addActionListener(new ActionListener() {
+		btnEnviar = new JButton("Salvar");
+		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					String cpf = textField.getText();
 					String tipochave = (String) list.getSelectedValue();
+					Conta conta = Fachada.obterConta(cpf);
+
+					boolean edicao = false;
+					if(!conta.getChavePiks().isEmpty()) edicao = true;
+
 					Fachada.criarChavePIKS(cpf, tipochave);
-					
-					lblmsg.setText("chave criada");
+
+					lblmsg.setText(edicao ? "chave alterada" : "chave criada");
 				} catch (Exception e) {
 					lblmsg.setText(e.getMessage());
 				}
 			}
 		});
-		btnApagar.setBounds(43, 71, 112, 23);
-		contentPane.add(this.btnApagar);
+		btnEnviar.setBounds(43, 71, 112, 23);
+		contentPane.add(this.btnEnviar);
 		lblmsg = new JLabel("Mensagem");
 		lblmsg.setBounds(19, 111, 294, 14);
 		contentPane.add(this.lblmsg);
