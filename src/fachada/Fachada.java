@@ -79,6 +79,9 @@ public class Fachada {
 		if(contadestino == null)
 			throw new Exception("conta destino invalida");
 
+		if(contaorigem == contadestino)
+			throw new IllegalStateException("Contas iguais");
+
 		contaorigem.transferir(contadestino, quantia);
 
 		Lancamento lancamentoOrigem = new Lancamento(LocalDateTime.now(), -quantia, contaorigem.getNumero());
