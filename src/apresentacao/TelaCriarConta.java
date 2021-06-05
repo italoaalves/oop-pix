@@ -109,8 +109,7 @@ public class TelaCriarConta extends JFrame {
 					else
 						conta = Fachada.criarConta(numero,cpf,telefone,email,nome);
 
-				//	lblmsg.setText("cadastrou conta:"+conta.getNumero()+" correntista:"+conta.getCorrentista().getCpf() );
-					textField.setText("");
+					lblmsg.setText("cadastrou conta: "+conta.getNumero()+", correntista:" +conta.getCorrentista().getCpf());
 					textField.requestFocus();
 				}
 				catch(Exception erro){
@@ -121,7 +120,7 @@ public class TelaCriarConta extends JFrame {
 		btnCriar.setBounds(227, 91, 95, 23);
 		contentPane.add(btnCriar);
 
-		lblmsg = new JLabel("mensagem");
+		lblmsg = new JLabel();
 		lblmsg.setBounds(10, 159, 273, 14);
 		contentPane.add(lblmsg);
 
